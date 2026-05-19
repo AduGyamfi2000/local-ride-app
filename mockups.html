@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RuralRide — Screen Mockups</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f0f1a; font-family: 'Segoe UI', system-ui, sans-serif; padding: 40px 20px; }
+
+  h1 { color: #fff; text-align: center; font-size: 28px; margin-bottom: 6px; }
+  .page-sub { color: #888; text-align: center; font-size: 14px; margin-bottom: 48px; }
+
+  .section-title {
+    color: #E8A020;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 24px;
+    margin-top: 48px;
+  }
+
+  .screens-row {
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .phone-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .phone-label { color: #aaa; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+
+  .phone {
+    width: 220px;
+    border-radius: 36px;
+    border: 7px solid #2a2a2a;
+    background: #fff;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.6), inset 0 0 0 1px #444;
+    position: relative;
+  }
+  .notch {
+    height: 22px;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .notch-bar {
+    width: 64px; height: 12px;
+    background: #222;
+    border-radius: 0 0 10px 10px;
+  }
+
+  /* ── COLORS ── */
+  :root {
+    --gold: #E8A020;
+    --gold-dark: #C07A10;
+    --green: #1B6B3A;
+    --green-light: #2E9E58;
+    --red: #D94F2E;
+    --bg: #F5F1EB;
+    --surface: #FFFFFF;
+    --card: #FFFFFF;
+    --border: #EDE8E0;
+    --text: #1A1A1A;
+    --text2: #5A5A5A;
+    --hint: #9E9E9E;
+    --success: #2E7D32;
+    --warning: #E65100;
+    --info: #1565C0;
+    --blue: #1565C0;
+  }
+
+  /* ── BASE SCREEN ── */
+  .screen { background: var(--bg); min-height: 430px; overflow: hidden; }
+
+  /* ── COMMON ── */
+  .appbar {
+    background: var(--gold);
+    padding: 10px 16px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .appbar .back { font-size: 18px; cursor: pointer; }
+  .body { padding: 16px; }
+  .btn {
+    background: var(--gold);
+    color: #fff;
+    border: none;
+    border-radius: 14px;
+    padding: 14px;
+    font-size: 14px;
+    font-weight: 700;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+  .btn.green { background: var(--green); }
+  .btn.outline { background: transparent; border: 2px solid var(--gold); color: var(--gold); }
+  .btn.danger { background: #C62828; }
+  .btn.sm { padding: 8px 14px; font-size: 12px; border-radius: 10px; }
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 12px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+  }
+  .badge.searching { background: rgba(232,160,32,0.15); color: var(--gold); }
+  .badge.accepted  { background: rgba(21,101,192,0.15); color: var(--blue); }
+  .badge.on_way    { background: rgba(106,27,154,0.15);  color: #6A1B9A; }
+  .badge.arrived   { background: rgba(0,131,143,0.15);   color: #00838F; }
+  .badge.completed { background: rgba(46,125,50,0.15);   color: var(--success); }
+  .badge.cancelled { background: rgba(198,40,40,0.15);   color: #C62828; }
+  .badge.online    { background: rgba(46,125,50,0.15);   color: var(--success); }
+  .badge.offline   { background: rgba(158,158,158,0.15); color: #666; }
+  .badge.busy      { background: rgba(230,81,0,0.15);    color: var(--warning); }
+  .label { font-size: 10px; font-weight: 600; color: var(--text2); margin-bottom: 4px; }
+  .field {
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 11px 12px;
+    font-size: 12px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .field .icon { font-size: 14px; }
+  .section-head {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .divider { height: 1px; background: var(--border); margin: 8px 0; }
+  .row-sb { display: flex; justify-content: space-between; align-items: center; }
+  .t1 { font-size: 13px; font-weight: 700; color: var(--text); }
+  .t2 { font-size: 11px; color: var(--text2); }
+  .t3 { font-size: 10px; color: var(--hint); }
+
+  /* ── BOTTOM NAV ── */
+  .bnav {
+    background: #fff;
+    border-top: 1px solid var(--border);
+    display: flex;
+    padding: 8px 0 4px;
+  }
+  .bnav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    font-size: 9px;
+    color: var(--hint);
+  }
+  .bnav-item.active { color: var(--gold); }
+  .bnav-item .icon { font-size: 18px; }
+
+  /* ══════════════════════════════════════════
+     1. SPLASH
+  ══════════════════════════════════════════ */
+  .splash {
+    background: var(--gold);
+    height: 430px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .splash .logo {
+    width: 90px; height: 90px;
+    background: #fff;
+    border-radius: 22px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 52px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+  .splash .app-name { color: #fff; font-size: 34px; font-weight: 900; letter-spacing: 1px; }
+  .splash .tagline { color: rgba(255,255,255,0.75); font-size: 13px; }
+  .splash .loader {
+    width: 30px; height: 30px;
+    border: 3px solid rgba(255,255,255,0.35);
+    border-top-color: #fff;
+    border-radius: 50%;
+    margin-top: 20px;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ══════════════════════════════════════════
+     2. ONBOARDING
+  ══════════════════════════════════════════ */
+  .onboard {
+    background: #FFF8E7;
+    height: 430px;
+    padding: 12px 16px 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  .onboard .skip { text-align: right; font-size: 11px; color: var(--hint); margin-bottom: 6px; }
+  .onboard .emoji { font-size: 80px; text-align: center; margin: 10px 0; }
+  .onboard .title { font-size: 24px; font-weight: 900; color: var(--text); text-align: center; line-height: 1.2; }
+  .onboard .sub { font-size: 12px; color: var(--text2); text-align: center; margin-top: 8px; line-height: 1.5; }
+  .onboard .spacer { flex: 1; }
+  .dots { display: flex; justify-content: center; gap: 5px; margin-bottom: 12px; }
+  .dot { height: 7px; border-radius: 10px; background: rgba(232,160,32,0.3); }
+  .dot.a { background: var(--gold); width: 24px; }
+  .dot:not(.a) { width: 7px; }
+
+  /* ══════════════════════════════════════════
+     3. LOGIN
+  ══════════════════════════════════════════ */
+  .login-s {
+    background: var(--bg);
+    height: 430px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  .login-logo {
+    width: 58px; height: 58px;
+    background: var(--gold);
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px;
+    margin: 0 auto 12px;
+    box-shadow: 0 6px 20px rgba(232,160,32,0.4);
+  }
+  .info-box {
+    background: rgba(232,160,32,0.1);
+    border-radius: 10px;
+    padding: 8px 10px;
+    display: flex; gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  /* ══════════════════════════════════════════
+     4. OTP
+  ══════════════════════════════════════════ */
+  .otp-boxes { display: flex; gap: 5px; margin-bottom: 12px; }
+  .otp-box {
+    flex: 1; height: 40px;
+    background: #fff;
+    border: 2px solid var(--gold);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: 700; color: var(--gold);
+  }
+  .otp-box.empty { border-color: var(--border); color: var(--hint); }
+  .role-row { display: flex; gap: 6px; }
+  .role-chip {
+    padding: 6px 10px;
+    border-radius: 10px;
+    font-size: 10px; font-weight: 700;
+  }
+  .role-chip.sel { background: var(--gold); color: #fff; }
+  .role-chip.unsel { background: var(--border); color: var(--text2); }
+
+  /* ══════════════════════════════════════════
+     5. USER HOME
+  ══════════════════════════════════════════ */
+  .home-header {
+    background: var(--bg);
+    padding: 14px 16px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .avatar {
+    width: 42px; height: 42px;
+    background: rgba(232,160,32,0.15);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+  }
+  .big-ride-btn {
+    background: var(--gold);
+    border-radius: 18px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+    box-shadow: 0 8px 24px rgba(232,160,32,0.4);
+  }
+  .vehicle-row { display: flex; gap: 8px; margin-bottom: 14px; }
+  .vehicle-card {
+    flex: 1;
+    background: #fff;
+    border-radius: 14px;
+    padding: 10px 6px;
+    text-align: center;
+    border: 1.5px solid var(--border);
+  }
+  .vehicle-card.sel { border-color: var(--gold); background: rgba(232,160,32,0.08); }
+  .active-ride-card {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    border-radius: 18px;
+    padding: 14px;
+    color: #fff;
+    margin-bottom: 12px;
+    box-shadow: 0 8px 24px rgba(232,160,32,0.4);
+  }
+
+  /* ══════════════════════════════════════════
+     6. REQUEST RIDE
+  ══════════════════════════════════════════ */
+  .price-box {
+    background: rgba(27,107,58,0.08);
+    border: 1px solid rgba(27,107,58,0.2);
+    border-radius: 14px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  /* ══════════════════════════════════════════
+     7. TRACKING
+  ══════════════════════════════════════════ */
+  .map-area {
+    height: 160px;
+    background: linear-gradient(135deg, #e8f0fe, #f0e8d0);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .map-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  .map-route {
+    position: absolute;
+    width: 3px; height: 90px;
+    background: var(--gold);
+    border-radius: 4px;
+    transform: rotate(35deg);
+  }
+  .driver-dot {
+    width: 36px; height: 36px;
+    background: var(--gold);
+    border-radius: 50%;
+    border: 3px solid #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    box-shadow: 0 4px 12px rgba(232,160,32,0.5);
+    position: relative; z-index: 2;
+  }
+  .timeline { padding: 0 16px; }
+  .tl-item { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 6px; }
+  .tl-dot {
+    width: 22px; height: 22px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; color: #fff; flex-shrink: 0; margin-top: 1px;
+  }
+  .tl-dot.done  { background: var(--gold); }
+  .tl-dot.active{ background: var(--blue); }
+  .tl-dot.idle  { background: var(--border); }
+  .tl-line { width: 2px; height: 14px; background: var(--border); margin: 2px 0 2px 10px; }
+  .tl-line.done { background: var(--gold); }
+
+  /* ══════════════════════════════════════════
+     8. HISTORY
+  ══════════════════════════════════════════ */
+
+  /* ══════════════════════════════════════════
+     9. PROFILE
+  ══════════════════════════════════════════ */
+  .big-avatar {
+    width: 80px; height: 80px;
+    background: rgba(232,160,32,0.12);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 44px;
+    margin: 0 auto 16px;
+    position: relative;
+  }
+  .cam-badge {
+    position: absolute; bottom: 2px; right: 2px;
+    width: 24px; height: 24px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+  }
+
+  /* ══════════════════════════════════════════
+     10. DRIVER HOME
+  ══════════════════════════════════════════ */
+  .online-btn {
+    border-radius: 20px;
+    padding: 22px;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  .online-btn.on  { background: linear-gradient(135deg, #2E7D32, #1B5E20); box-shadow: 0 8px 24px rgba(46,125,50,0.4); }
+  .online-btn.off { background: linear-gradient(135deg, #757575, #424242); }
+
+  /* ══════════════════════════════════════════
+     11. INCOMING RIDE
+  ══════════════════════════════════════════ */
+
+  /* ══════════════════════════════════════════
+     12. ADMIN
+  ══════════════════════════════════════════ */
+  .tab-bar {
+    display: flex;
+    background: var(--gold);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+  }
+  .tab-item {
+    flex: 1;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.6);
+  }
+  .tab-item.active {
+    color: #fff;
+    border-bottom: 2.5px solid #fff;
+  }
+
+  /* ══════════════════════════════════════════
+     OFFLINE BANNER
+  ══════════════════════════════════════════ */
+  .offline-banner {
+    background: var(--warning);
+    padding: 7px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    color: #fff;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<h1>🚗 RuralRide App — All Screen Mockups</h1>
+<p class="page-sub">Flutter · Clean Architecture · Offline-First · Ghana / Rural Africa</p>
+
+<!-- ═══════════════════════════════════════════════
+     ROW 1 — AUTH FLOW
+════════════════════════════════════════════════ -->
+<div class="section-title">── AUTH FLOW ──</div>
+<div class="screens-row">
+
+  <!-- 1. Splash -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="notch"><div class="notch-bar"></div></div>
+      <div class="screen" style="min-height:0">
+        <div class="splash">
+          <div class="logo">🚗</div>
+          <div class="app-name">RuralRide</div>
+          <div class="tagline">Ride. Anywhere. Anytime.</div>
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">1 · Splash</div>
+  </div>
+
+  <!-- 2. Onboarding -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="notch"><div class="notch-bar"></div></div>
+      <div class="screen" style="min-height:0">
+        <div class="onboard">
+          <div class="skip">Skip</div>
+          <div class="emoji">🚗</div>
+          <div class="title">Book a Ride<br>Easily</div>
+          <div class="sub">Request a taxi, motorcycle, or tricycle with just a few taps. Works without internet!</div>
+          <div class="spacer"></div>
+          <div class="dots">
+            <div class="dot a"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          </div>
+          <button class="btn">Next →</button>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">2 · Onboarding</div>
+  </div>
+
+  <!-- 3. Login -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="notch"><div class="notch-bar"></div></div>
+      <div class="screen" style="min-height:0">
+        <div class="login-s">
+          <div class="login-logo">🚗</div>
+          <div style="font-size:17px;font-weight:900;color:var(--text);margin-bottom:4px">Welcome 👋</div>
+          <div class="t2" style="margin-bottom:14px">Enter your phone number to get started.</div>
+          <div class="label">PHONE NUMBER</div>
+          <div class="field">
+            <span class="icon">🇬🇭</span>
+            <span style="color:#aaa;font-size:11px">+233</span>
+            <span style="font-size:12px;color:var(--text);flex:1">24 123 4567</span>
+          </div>
+          <div class="info-box">
+            <span style="font-size:12px">ℹ️</span>
+            <span style="font-size:10px;color:var(--text2)">We will send you a 6-digit verification code.</span>
+          </div>
+          <button class="btn" style="margin-bottom:12px">📩 Send OTP Code</button>
+          <div style="text-align:center;font-size:10px;color:var(--hint)">🌐 Language: <span style="color:var(--gold);font-weight:700">English | Twi</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">3 · Login</div>
+  </div>
+
+  <!-- 4. OTP -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="notch"><div class="notch-bar"></div></div>
+      <div class="screen" style="min-height:0">
+        <div class="body" style="background:var(--bg)">
+          <div style="font-size:40px;margin-bottom:6px">📱</div>
+          <div style="font-size:18px;font-weight:900;color:var(--text);margin-bottom:4px">Enter OTP Code</div>
+          <div class="t2" style="margin-bottom:14px">Sent to +233241234567</div>
+          <div class="otp-boxes">
+            <div class="otp-box">3</div><div class="otp-box">7</div><div class="otp-box">4</div>
+            <div class="otp-box empty">–</div><div class="otp-box empty">–</div><div class="otp-box empty">–</div>
+          </div>
+          <div class="card" style="margin-bottom:12px">
+            <div style="font-size:12px;font-weight:700;margin-bottom:8px">I am a...</div>
+            <div class="role-row">
+              <div class="role-chip sel">🧑 Rider</div>
+              <div class="role-chip unsel">🚗 Driver</div>
+              <div class="role-chip unsel">⚙️ Admin</div>
+            </div>
+          </div>
+          <button class="btn" style="margin-bottom:8px">✅ Verify & Login</button>
+          <div style="text-align:center;font-size:10px;color:var(--hint)">Resend code in 48 seconds</div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">4 · OTP Verify</div>
+  </div>
+
+</div><!-- /row -->
+
+<!-- ═══════════════════════════════════════════════
+     ROW 2 — USER APP
+════════════════════════════════════════════════ -->
+<div class="section-title">── USER APP ──</div>
+<div class="screens-row">
+
+  <!-- 5. User Home -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="notch"><div class="notch-bar"></div></div>
+      <div class="screen" style="min-height:0">
+        <div class="home-header">
+          <div>
+            <div class="t3">Good Morning,</div>
+            <div style="font-size:16px;font-weight:900;color:var(--text)">Kofi Mensah</div>
+          </div>
+          <div class="avatar">👤</div>
+        </div>
+        <div class="offline-banner">
+          <span>📴</span> No internet · 2 requests saved
+        </div>
+        <div class="body">
+          <div class="section-head">Book a Ride</div>
+          <div class="big-ride-btn">
+            <span style="font-size:38px">🚗</span>
+            <div>
+              <div style="color:#fff;font-size:16px;font-weight:900">Request a Ride</div>
+              <div style="color:rgba(255,255,255,0.7);font-size:11px">Taxi · Motorcycle · Tricycle</div>
+            </div>
+            <span style="color:#fff;margin-left:auto;font-size:20px">→</span>
+          </div>
+          <div class="vehicle-row">
+            <div class="vehicle-card sel">
+              <div style="font-size:22px">🚕</div>
+              <div style="font-size:11px;font-weight:700;color:var(--gold)">Taxi</div>
+              <div style="font-size:10px;color:var(--gold)">GHS 5+</div>
+            </div>
+            <div class="vehicle-card">
+              <div style="font-size:22px">🏍</div>
+              <div style="font-size:11px;font-weight:700;color:var(--text2)">Moto</div>
+              <div style="font-size:10px;color:var(--hint)">GHS 2+</div>
+            </div>
+            <div class="vehicle-card">
+              <div style="font-size:22px">🛺</div>
+              <div style="font-size:11px;font-weight:700;color:var(--text2)">Trike</div>
+              <div style="font-size:10px;color:var(--hint)">GHS 3+</div>
+            </div>
+          </div>
+          <div class="section-head" style="margin-bottom:6px">Recent Rides</div>
+          <div class="card" style="padding:10px;margin-bottom:6px">
+            <div class="row-sb">
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-size:22px">🚕</span>
+                <div>
+                  <div class="t1" style="font-size:11px">Market Circle → Suame</div>
+                  <div class="t3">Today</div>
+                </div>
+              </div>
+              <div style="text-align:right">
+                <div class="t1" style="font-size:12px">GHS 12.50</div>
+                <div class="badge completed">✅ Done</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bnav">
+          <div class="bnav-item active"><div class="icon">🏠</div>Home</div>
+          <div class="bnav-item"><div class="icon">🕐</div>History</div>
+          <div class="bnav-item"><div class="icon">👤</div>Profile</div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">5 · User Home</div>
+  </div>
+
+  <!-- 6. Request Ride -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="notch"><div class="notch-bar"></div></div>
+      <div class="screen" style="min-height:0">
+        <div class="appbar">← Book a Ride</div>
+        <div class="body">
+          <div class="section-head" style="margin-bottom:8px">Choose Vehicle</div>
+          <div class="vehicle-row" style="margin-bottom:14px">
+            <div class="vehicle-card sel">🚕<br><span style="font-size:10px;font-weight:700;color:var(--gold)">Taxi</span></div>
+            <div class="vehicle-card">🏍<br><span style="font-size:10px;font-weight:700;color:var(--text2)">Moto</span></div>
+            <div class="vehicle-card">🛺<br><span style="font-size:10px;font-weight:700;color:var(--text2)">Trike</span></div>
+          </div>
+          <div class="section-head">Where to?</div>
+          <div class="label">PICKUP LOCATION</div>
+          <div class="field">
+            <span style="font-size:14px;color:var(--green)">📍</span>
+            <span style="font-size:11px;flex:1">Market Circle, Kumasi</span>
+            <span style="font-size:12px">🎯</span>
+          </div>
+          <div style="text-align:center;font-size:14px;color:var(--hint);margin:-4px 0">⇅</div>
+          <div class="label" style="margin-top:4px">DESTINATION</div>
+          <div class="field" style="border-color:var(--gold)">
+            <span style="font-size:14px;color:var(--red)">🏁</span>
+            <span style="font-size:11px;flex:1">Suame Magazine</span>
+          </div>
+          <div class="label" style="margin-top:6px">PASSENGERS</div>
+          <div class="card" style="padding:10px;display:flex;align-items:center;gap:8px;margin-bottom:10px">
+            <span>👥</span>
+            <span class="t1" style="font-size:12px;flex:1">Passengers</span>
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="width:26px;height:26px;background:rgba(232,160,32,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px">−</div>
+              <span style="font-size:16px;font-weight:800">2</span>
+              <div style="width:26px;height:26px;background:rgba(232,160,32,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px">+</div>
+            </div>
+          </div>
+          <div class="price-box">
+            <span style="font-size:26px">💰</span>
+            <div>
+              <div class="t3">Estimated Price</div>
+              <div style="font-size:18px;font-weight:900;color:var(--green)">GHS 15.50</div>
+            </div>
+            <div style="margin-left:auto;text-align:right">
+              <div class="t1" style="font-size:11px">Taxi</div>
+              <div class="t3">2 pax · 3.2 km</div>
+            </div>
+          </div>
+          <button class="btn">🚗 Request Ride</button>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">6 · Request Ride</div>
+  </div>
+
+  <!-- 7. Tracking -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="notch"><div class="notch-bar"></div></div>
+      <div class="screen" style="min-height:0">
+        <div class="appbar">Track Ride</div>
+        <div class="map-area">
+          <div class="map-grid"></div>
+          <div class="map-route"></div>
+          <div class="driver-dot">🚗</div>
+        </div>
+        <div class="body" style="padding-top:10px">
+          <!-- Driver card -->
+          <div class="card" style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+            <div style="width:44px;height:44px;background:rgba(232,160,32,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px">👨</div>
+            <div style="flex:1">
+              <div class="t1">Kwame Asante</div>
+              <div class="t3">Toyota Corolla · GR-1234-20</div>
+              <div style="display:flex;gap:4px;align-items:center;margin-top:2px">
+                <span style="font-size:10px;color:var(--gold)">⭐ 4.8</span>
+                <span class="t3"> · 342 trips</span>
+              </div>
+            </div>
+            <div style="display:flex;gap:6px">
+              <div style="width:34px;height:34px;background:rgba(27,107,58,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px">📞</div>
+              <div style="width:34px;height:34px;background:rgba(232,160,32,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px">💬</div>
+            </div>
+          </div>
+          <!-- Timeline -->
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-dot done">✓</div>
+              <div class="t2" style="padding-top:2px">Searching for driver</div>
+            </div>
+            <div class="tl-line done"></div>
+            <div class="tl-item">
+              <div class="tl-dot done">✓</div>
+              <div class="t2" style="padding-top:2px">Driver accepted your ride</div>
+            </div>
+            <div class="tl-line done"></div>
+            <div class="tl-item">
+              <div class="tl-dot active" style="font-size:8px">🚗</div>
+              <div style="font-size:12px;font-weight:700;color:var(--blue);padding-top:2px">Driver is on the way…</div>
+            </div>
+            <div class="tl-line"></div>
+            <div class="tl-item">
+              <div class="tl-dot idle"></div>
+              <div class="t3" style="padding-top:2px">Driver arrives</div>
+            </div>
+          </div>
+          <button class="btn danger btn sm" style="margin-top:8px;padding:9px;font-size:12px">✕ Cancel Ride</button>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">7 · Live Tracking</div>
+  </div>
+
+  <!-- 8. History -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="notch"><div class="notch-bar"></div></div>
+      <div class="screen" style="min-height:0">
+        <div class="appbar">← Ride History</div>
+        <div class="body">
+          <!-- Ride 1 -->
+          <div class="card">
+            <div class="row-sb" style="margin-bottom:8px">
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-size:26px">🚕</span>
+                <div>
+                  <div class="t1" style="font-size:12px">Market Circle → Suame</div>
+                  <div class="t3">Today</div>
+                </div>
+              </div>
+              <div class="badge completed">✅ Done</div>
+            </div>
+            <div class="divider"></div>
+            <div class="row-sb" style="margin-top:6px">
+              <div style="display:flex;gap:6px">
+                <div style="background:var(--border);border-radius:8px;padding:3px 8px;font-size:10px;font-weight:600;color:var(--text2)">👥 2 pax</div>
+                <div style="background:var(--border);border-radius:8px;padding:3px 8px;font-size:10px;font-weight:600;color:var(--text2)">📏 3.2 km</div>
+              </div>
+              <div style="font-size:15px;font-weight:900;color:var(--green)">GHS 12.50</div>
+            </div>
+          </div>
+          <!-- Ride 2 -->
+          <div class="card">
+            <div class="row-sb" style="margin-bottom:8px">
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-size:26px">🏍</span>
+                <div>
+                  <div class="t1" style="font-size:12px">Kejetia → Anloga Junc.</div>
+                  <div class="t3">Yesterday</div>
+                </div>
+              </div>
+              <div class="badge completed">✅ Done</div>
+            </div>
+            <div class="divider"></div>
+            <div class="row-sb" style="margin-top:6px">
+              <div style="display:flex;gap:6px">
+                <div style="background:var(--border);border-radius:8px;padding:3px 8px;font-size:10px;font-weight:600;color:var(--text2)">👥 1 pax</div>
+                <div style="background:var(--border);border-radius:8px;padding:3px 8px;font-size:10px;font-weight:600;color:var(--text2)">📏 1.8 km</div>
+              </div>
+              <div style="font-size:15px;font-weight:900;color:var(--green)">GHS 6.00</div>
+            </div>
+          </div>
+          <!-- Ride 3 -->
+          <div class="card">
+            <div class="row-sb" style="margin-bottom:8px">
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-size:26px">🛺</span>
+                <div>
+                  <div class="t1" style="font-size:12px">Tamale Central → Bulp.</div>
+                  <div class="t3">2 days ago</div>
+                </div>
+              </div>
+              <div class="badge cancelled">✕ Cancelled</div>
+            </div>
+            <div class="divider"></div>
+            <div class="row-sb" style="margin-top:6px">
+              <div style="background:var(--border);border-radius:8px;padding:3px 8px;font-size:10px;font-weight:600;color:var(--text2)">👥 3 pax</div>
+              <div style="font-size:15px;font-weight:900;color:var(--hint)">–</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">8 · Ride History</div>
+  </div>
+
+  <!-- 9. Profile -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="notch"><div class="notch-bar"></div></div>
+      <div class="screen" style="min-height:0">
+        <div class="appbar">← My Profile</div>
+        <div class="body">
+          <div class="big-avatar">
+            👤
+            <div class="cam-badge">📷</div>
+          </div>
+          <div class="label">FULL NAME</div>
+          <div class="field" style="margin-bottom:8px"><span class="icon">👤</span> Kofi Mensah</div>
+          <div class="label">PHONE NUMBER</div>
+          <div class="field" style="background:var(--border);margin-bottom:8px"><span class="icon">📞</span>+233241234567</div>
+          <div class="label">HOME ADDRESS</div>
+          <div class="field" style="margin-bottom:12px"><span class="icon">🏠</span> Kumasi, Ashanti Region</div>
+          <div class="label">LANGUAGE</div>
+          <div style="display:flex;gap:8px;margin-bottom:10px">
+            <div style="background:var(--gold);color:#fff;border-radius:10px;padding:7px 12px;font-size:11px;font-weight:700">🇬🇧 English</div>
+            <div style="background:var(--border);border-radius:10px;padding:7px 12px;font-size:11px;font-weight:700;color:var(--text2)">🇬🇭 Twi</div>
+          </div>
+          <div class="card" style="padding:10px;display:flex;align-items:center;gap:8px;margin-bottom:12px">
+            <span style="font-size:16px">🔊</span>
+            <div style="flex:1">
+              <div class="t1" style="font-size:12px">Voice Instructions</div>
+              <div class="t3">Hear ride updates aloud</div>
+            </div>
+            <div style="width:36px;height:20px;background:var(--gold);border-radius:10px;position:relative">
+              <div style="width:16px;height:16px;background:#fff;border-radius:50%;position:absolute;top:2px;right:2px"></div>
+            </div>
+          </div>
+          <button class="btn" style="margin-bottom:8px;font-size:13px">💾 Save Changes</button>
+          <button class="btn outline" style="font-size:13px">🚪 Logout</button>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">9 · Profile</div>
+  </div>
+
+</div><!-- /row 2 -->
+
+<!-- ═══════════════════════════════════════════════
+     ROW 3 — DRIVER APP
+════════════════════════════════════════════════ -->
+<div class="section-title">── DRIVER APP ──</div>
+<div class="screens-row">
+
+  <!-- 10. Driver Home (Online) -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="notch"><div class="notch-bar"></div></div>
+      <div class="screen" style="min-height:0">
+        <div class="home-header" style="background:var(--bg)">
+          <div>
+            <div class="t3">Hello, Driver 👋</div>
+            <div style="font-size:16px;font-weight:900;color:var(--text)">Kwame Asante</div>
+          </div>
+          <div class="badge online" style="padding:5px 12px;font-size:11px">🟢 Online</div>
+        </div>
+        <div class="body">
+          <div class="online-btn on">
+            <div style="font-size:42px">🟢</div>
+            <div style="font-size:18px;font-weight:900;letter-spacing:1px;margin-top:6px">YOU ARE ONLINE</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.7);margin-top:4px">Waiting for ride requests...</div>
+          </div>
+          <div style="display:flex;gap:10px;margin-bottom:14px">
+            <div style="flex:1;background:rgba(27,107,58,0.1);border-radius:14px;padding:12px;border:1px solid rgba(27,107,58,0.2)">
+              <div class="t3">💰 Today</div>
+              <div style="font-size:18px;font-weight:900;color:var(--green)">GHS 85.00</div>
+            </div>
+            <div style="flex:1;background:rgba(232,160,32,0.1);border-radius:14px;padding:12px;border:1px solid rgba(232,160,32,0.2)">
+              <div class="t3">🚗 Trips</div>
+              <div style="font-size:18px;font-weight:900;color:var(--gold)">6</div>
+            </div>
+          </div>
+          <div class="card" style="display:flex;align-items:center;gap:10px;padding:12px">
+            <span style="font-size:32px">🚕</span>
+            <div>
+              <div class="t1">Toyota Corolla</div>
+              <div class="t3">GR-1234-20</div>
+            </div>
+            <div style="margin-left:auto;display:flex;align-items:center;gap:3px">
+              <span style="font-size:13px;color:var(--gold)">⭐</span>
+              <span style="font-size:13px;font-weight:700">4.8</span>
+            </div>
+          </div>
+        </div>
+        <div class="bnav">
+          <div class="bnav-item active"><div class="icon">🏠</div>Home</div>
+          <div class="bnav-item"><div class="icon">💰</div>Earnings</div>
+          <div class="bnav-item"><div class="icon">👤</div>Profile</div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">10 · Driver Home</div>
+  </div>
+
+  <!-- 11. Incoming Ride -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="notch"><div class="notch-bar"></div></div>
+      <div class="screen" style="min-height:0">
+        <div class="body" style="background:var(--bg);display:flex;flex-direction:column;align-items:center;min-height:430px;padding-top:20px">
+          <div style="font-size:56px;margin-bottom:8px">🔔</div>
+          <div style="font-size:20px;font-weight:900;color:var(--text);margin-bottom:4px">New Ride Request!</div>
+          <div style="font-size:11px;color:var(--warning);font-weight:700;margin-bottom:16px">Auto-reject in 15 seconds</div>
+          <div class="card" style="width:100%;margin-bottom:16px">
+            <div class="row-sb" style="margin-bottom:7px">
+              <span class="t3">📍 Pickup</span>
+              <span class="t1" style="font-size:12px">Kejetia Market</span>
+            </div>
+            <div class="divider"></div>
+            <div class="row-sb" style="margin:7px 0">
+              <span class="t3">🏁 Drop-off</span>
+              <span class="t1" style="font-size:12px">KNUST Gate</span>
+            </div>
+            <div class="divider"></div>
+            <div class="row-sb" style="margin:7px 0">
+              <span class="t3">👥 Passengers</span>
+              <span class="t1" style="font-size:12px">2</span>
+            </div>
+            <div class="divider"></div>
+            <div class="row-sb" style="margin-top:7px">
+              <span class="t3">💰 Est. Fare</span>
+              <span style="font-size:15px;font-weight:900;color:var(--green)">GHS 15.50</span>
+            </div>
+          </div>
+          <div style="display:flex;gap:12px;width:100%">
+            <button class="btn outline" style="font-size:13px">✕ Reject</button>
+            <button class="btn green" style="font-size:13px">✓ Accept</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">11 · Incoming Ride</div>
+  </div>
+
+  <!-- 12. Driver Navigation -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="notch"><div class="notch-bar"></div></div>
+      <div class="screen" style="min-height:0">
+        <div class="appbar">← Navigation</div>
+        <div class="map-area" style="height:180px">
+          <div class="map-grid"></div>
+          <svg style="position:absolute;inset:0;width:100%;height:100%">
+            <line x1="30" y1="160" x2="180" y2="20" stroke="#E8A020" stroke-width="3" stroke-dasharray="8,4" stroke-linecap="round"/>
+            <circle cx="30" cy="160" r="8" fill="#2E9E58"/>
+            <circle cx="180" cy="20" r="8" fill="#D94F2E"/>
+          </svg>
+          <div class="driver-dot" style="position:absolute;top:70px;left:80px;width:32px;height:32px;font-size:16px">🚗</div>
+        </div>
+        <div class="body">
+          <div class="card" style="margin-bottom:10px">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+              <span style="color:var(--green);font-size:16px">📍</span>
+              <span class="t1" style="font-size:12px">Kejetia Market <span style="color:var(--green);font-size:10px;font-weight:600">← PICKUP</span></span>
+            </div>
+            <div class="divider"></div>
+            <div style="display:flex;align-items:center;gap:10px;margin-top:8px">
+              <span style="color:var(--red);font-size:16px">🏁</span>
+              <span class="t1" style="font-size:12px">KNUST Gate</span>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;margin-bottom:10px">
+            <div style="flex:1;background:var(--border);border-radius:10px;padding:8px;text-align:center">
+              <div class="t3">Distance</div>
+              <div style="font-size:14px;font-weight:700">3.2 km</div>
+            </div>
+            <div style="flex:1;background:var(--border);border-radius:10px;padding:8px;text-align:center">
+              <div class="t3">Est. Time</div>
+              <div style="font-size:14px;font-weight:700">8 min</div>
+            </div>
+            <div style="flex:1;background:rgba(27,107,58,0.1);border-radius:10px;padding:8px;text-align:center">
+              <div class="t3">Fare</div>
+              <div style="font-size:14px;font-weight:700;color:var(--green)">GHS 15.50</div>
+            </div>
+          </div>
+          <button class="btn green" style="margin-bottom:8px;font-size:13px">📍 Arrived at Pickup</button>
+          <button class="btn" style="font-size:13px">🏁 End Trip &amp; Collect Fare</button>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">12 · Driver Nav</div>
+  </div>
+
+  <!-- 13. Driver Earnings -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="notch"><div class="notch-bar"></div></div>
+      <div class="screen" style="min-height:0">
+        <div class="appbar">← My Earnings</div>
+        <div class="body">
+          <div style="background:linear-gradient(135deg,var(--green),#0D4A26);border-radius:20px;padding:18px;color:#fff;text-align:center;margin-bottom:14px">
+            <div style="font-size:30px">💰</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.7);margin-top:4px">Total Earnings</div>
+            <div style="font-size:28px;font-weight:900">GHS 1,248.50</div>
+            <div style="display:flex;justify-content:space-around;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.15)">
+              <div><div style="font-size:14px;font-weight:700">GHS 85</div><div style="font-size:9px;color:rgba(255,255,255,0.6)">Today</div></div>
+              <div><div style="font-size:14px;font-weight:700">GHS 420</div><div style="font-size:9px;color:rgba(255,255,255,0.6)">This Week</div></div>
+              <div><div style="font-size:14px;font-weight:700">342</div><div style="font-size:9px;color:rgba(255,255,255,0.6)">Trips</div></div>
+            </div>
+          </div>
+          <div class="section-head" style="margin-bottom:8px">Recent Trips</div>
+          <div class="card" style="padding:10px;display:flex;align-items:center;gap:8px;margin-bottom:6px">
+            <span style="font-size:22px">🚕</span>
+            <div style="flex:1">
+              <div class="t1" style="font-size:11px">Kejetia → KNUST</div>
+              <div class="t3">Today 2:30 PM</div>
+            </div>
+            <div style="font-size:14px;font-weight:900;color:var(--green)">+GHS 15.50</div>
+          </div>
+          <div class="card" style="padding:10px;display:flex;align-items:center;gap:8px;margin-bottom:6px">
+            <span style="font-size:22px">🏍</span>
+            <div style="flex:1">
+              <div class="t1" style="font-size:11px">Suame → Asokwa</div>
+              <div class="t3">Today 11:00 AM</div>
+            </div>
+            <div style="font-size:14px;font-weight:900;color:var(--green)">+GHS 9.00</div>
+          </div>
+          <div class="card" style="padding:10px;display:flex;align-items:center;gap:8px">
+            <span style="font-size:22px">🚕</span>
+            <div style="flex:1">
+              <div class="t1" style="font-size:11px">Airport → City</div>
+              <div class="t3">Yesterday 4:00 PM</div>
+            </div>
+            <div style="font-size:14px;font-weight:900;color:var(--green)">+GHS 28.00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">13 · Earnings</div>
+  </div>
+
+</div><!-- /row 3 -->
+
+<!-- ═══════════════════════════════════════════════
+     ROW 4 — ADMIN
+════════════════════════════════════════════════ -->
+<div class="section-title">── ADMIN DASHBOARD ──</div>
+<div class="screens-row">
+
+  <!-- 14. Admin Rides Tab -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="notch"><div class="notch-bar"></div></div>
+      <div class="screen" style="min-height:0">
+        <div class="appbar" style="padding-bottom:0;flex-direction:column;gap:0">
+          <div style="padding:6px 0 8px;font-size:14px">⚙️ Admin Dashboard</div>
+          <div class="tab-bar" style="width:calc(100% + 32px);margin:0 -16px">
+            <div class="tab-item active">Rides</div>
+            <div class="tab-item">Drivers</div>
+            <div class="tab-item">Stats</div>
+          </div>
+        </div>
+        <div class="body" style="padding-top:12px">
+          <div class="card" style="padding:10px;margin-bottom:8px">
+            <div class="row-sb" style="margin-bottom:6px">
+              <div style="display:flex;align-items:center;gap:6px">
+                <span style="font-size:18px">🚕</span>
+                <span class="t1">#001</span>
+              </div>
+              <div class="badge on_way">🚗 On the Way</div>
+            </div>
+            <div class="t2" style="font-size:11px;margin-bottom:4px">Market Circle → Suame Magazine</div>
+            <div class="row-sb">
+              <div style="display:flex;align-items:center;gap:4px">
+                <span class="t3">👤 Kwame A.</span>
+              </div>
+              <span style="font-size:12px;font-weight:700;color:var(--green)">GHS 12.50</span>
+            </div>
+          </div>
+          <div class="card" style="padding:10px;margin-bottom:8px">
+            <div class="row-sb" style="margin-bottom:6px">
+              <div style="display:flex;align-items:center;gap:6px">
+                <span style="font-size:18px">🏍</span>
+                <span class="t1">#002</span>
+              </div>
+              <div class="badge searching">🔍 Searching</div>
+            </div>
+            <div class="t2" style="font-size:11px;margin-bottom:6px">Kejetia → KNUST Gate</div>
+            <div class="row-sb" style="margin-bottom:6px">
+              <span class="t3">👤 Unassigned</span>
+              <span style="font-size:12px;font-weight:700;color:var(--green)">GHS 15.00</span>
+            </div>
+            <button class="btn sm" style="font-size:11px;padding:7px">👤+ Assign Driver</button>
+          </div>
+          <div class="card" style="padding:10px">
+            <div class="row-sb" style="margin-bottom:6px">
+              <div style="display:flex;align-items:center;gap:6px">
+                <span style="font-size:18px">🚕</span>
+                <span class="t1">#003</span>
+              </div>
+              <div class="badge completed">✅ Completed</div>
+            </div>
+            <div class="t2" style="font-size:11px;margin-bottom:4px">Airport → City Centre</div>
+            <div class="row-sb">
+              <span class="t3">👤 Kojo M.</span>
+              <span style="font-size:12px;font-weight:700;color:var(--green)">GHS 28.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">14 · Admin Rides</div>
+  </div>
+
+  <!-- 15. Admin Drivers Tab -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="notch"><div class="notch-bar"></div></div>
+      <div class="screen" style="min-height:0">
+        <div class="appbar" style="padding-bottom:0;flex-direction:column;gap:0">
+          <div style="padding:6px 0 8px;font-size:14px">⚙️ Admin Dashboard</div>
+          <div class="tab-bar" style="width:calc(100% + 32px);margin:0 -16px">
+            <div class="tab-item">Rides</div>
+            <div class="tab-item active">Drivers</div>
+            <div class="tab-item">Stats</div>
+          </div>
+        </div>
+        <div class="body" style="padding-top:12px">
+          <div class="card" style="padding:10px;margin-bottom:8px;display:flex;align-items:center;gap:10px">
+            <div style="width:40px;height:40px;background:rgba(232,160,32,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px">👤</div>
+            <div style="flex:1">
+              <div class="t1" style="font-size:12px">Kwame Asante</div>
+              <div class="t3">Toyota Corolla · GR-1234-20</div>
+              <div style="font-size:10px;color:var(--hint)">⭐ 4.8 · 342 trips</div>
+            </div>
+            <div class="badge online" style="font-size:10px">ONLINE</div>
+          </div>
+          <div class="card" style="padding:10px;margin-bottom:8px;display:flex;align-items:center;gap:10px">
+            <div style="width:40px;height:40px;background:rgba(232,160,32,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px">👤</div>
+            <div style="flex:1">
+              <div class="t1" style="font-size:12px">Kojo Mensah</div>
+              <div class="t3">Honda CB125 · AK-5678-21</div>
+              <div style="font-size:10px;color:var(--hint)">⭐ 4.5 · 189 trips</div>
+            </div>
+            <div class="badge busy" style="font-size:10px">BUSY</div>
+          </div>
+          <div class="card" style="padding:10px;display:flex;align-items:center;gap:10px">
+            <div style="width:40px;height:40px;background:rgba(232,160,32,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px">👤</div>
+            <div style="flex:1">
+              <div class="t1" style="font-size:12px">Ama Serwaa</div>
+              <div class="t3">Tricycle (Keke) · KS-9012-22</div>
+              <div style="font-size:10px;color:var(--hint)">⭐ 4.9 · 521 trips</div>
+            </div>
+            <div class="badge offline" style="font-size:10px">OFFLINE</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">15 · Admin Drivers</div>
+  </div>
+
+  <!-- 16. Admin Stats Tab -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="notch"><div class="notch-bar"></div></div>
+      <div class="screen" style="min-height:0">
+        <div class="appbar" style="padding-bottom:0;flex-direction:column;gap:0">
+          <div style="padding:6px 0 8px;font-size:14px">⚙️ Admin Dashboard</div>
+          <div class="tab-bar" style="width:calc(100% + 32px);margin:0 -16px">
+            <div class="tab-item">Rides</div>
+            <div class="tab-item">Drivers</div>
+            <div class="tab-item active">Stats</div>
+          </div>
+        </div>
+        <div class="body" style="padding-top:12px">
+          <div style="display:flex;gap:10px;margin-bottom:10px">
+            <div style="flex:1;background:rgba(232,160,32,0.1);border-radius:14px;padding:12px;border:1px solid rgba(232,160,32,0.2)">
+              <div style="font-size:22px">📊</div>
+              <div class="t3" style="margin-top:4px">Total Rides</div>
+              <div style="font-size:20px;font-weight:900;color:var(--gold)">47</div>
+            </div>
+            <div style="flex:1;background:rgba(27,107,58,0.1);border-radius:14px;padding:12px;border:1px solid rgba(27,107,58,0.2)">
+              <div style="font-size:22px">🚗</div>
+              <div class="t3" style="margin-top:4px">Drivers</div>
+              <div style="font-size:20px;font-weight:900;color:var(--green)">12</div>
+            </div>
+          </div>
+          <div class="card" style="padding:12px;margin-bottom:8px;display:flex;align-items:center;gap:10px">
+            <div style="width:44px;height:44px;background:rgba(232,160,32,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px">💰</div>
+            <div style="flex:1">
+              <div class="t3">Revenue Today</div>
+              <div style="font-size:16px;font-weight:900;color:var(--gold)">GHS 842.50</div>
+            </div>
+          </div>
+          <div class="card" style="padding:12px;margin-bottom:8px;display:flex;align-items:center;gap:10px">
+            <div style="width:44px;height:44px;background:rgba(230,81,0,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px">📴</div>
+            <div style="flex:1">
+              <div class="t3">Pending (Offline)</div>
+              <div style="font-size:16px;font-weight:900;color:var(--warning)">3 requests</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px">
+            <div style="flex:1;background:rgba(46,125,50,0.1);border-radius:14px;padding:12px;border:1px solid rgba(46,125,50,0.2)">
+              <div style="font-size:20px">✅</div>
+              <div class="t3" style="margin-top:4px">Completed</div>
+              <div style="font-size:18px;font-weight:900;color:var(--success)">38</div>
+            </div>
+            <div style="flex:1;background:rgba(198,40,40,0.1);border-radius:14px;padding:12px;border:1px solid rgba(198,40,40,0.2)">
+              <div style="font-size:20px">❌</div>
+              <div class="t3" style="margin-top:4px">Cancelled</div>
+              <div style="font-size:18px;font-weight:900;color:#C62828">6</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">16 · Admin Stats</div>
+  </div>
+
+</div><!-- /row 4 -->
+
+<p style="color:#555;text-align:center;font-size:12px;margin-top:48px;padding-bottom:32px">
+  RuralRide · Flutter · Clean Architecture · BLoC · Offline-First · Voice (TTS + Twi) · Ghana 🇬🇭
+</p>
+
+</body>
+</html>
