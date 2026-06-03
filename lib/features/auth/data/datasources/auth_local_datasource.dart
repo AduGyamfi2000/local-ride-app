@@ -1,9 +1,8 @@
-// lib/features/auth/data/datasources/auth_local_datasource.dart
-
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../models/user_model.dart';
+import 'auth_api_client.dart';
 
 abstract class AuthLocalDatasource {
   Future<void> cacheUser(UserModel user);
@@ -51,19 +50,23 @@ class AuthLocalDatasourceImpl implements AuthLocalDatasource {
   }
 }
 
-// lib/features/auth/data/datasources/auth_remote_datasource.dart
-
-
 abstract class AuthRemoteDatasource {
   Future<String> sendOtp(String phoneNumber);
   Future<Map<String, dynamic>> verifyOtp(String phoneNumber, String otp, String role);
 }
 
 class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
-  // In production: inject Dio and use real Firebase or custom backend
+  final AuthApiClient? apiClient;
+
+  AuthRemoteDatasourceImpl({this.apiClient});
+
   @override
   Future<String> sendOtp(String phoneNumber) async {
-    // Simulate OTP send
+    if (apiClient != null) {
+      final result = await apiClient!.sendOtp(phoneNumber);
+      return result['success'] ? 'otp_sent' : 'otp_failed';
+    }
+
     await Future.delayed(const Duration(seconds: 1));
     return 'otp_sent';
   }
@@ -71,7 +74,10 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
   @override
   Future<Map<String, dynamic>> verifyOtp(
       String phoneNumber, String otp, String role) async {
-    // Simulate OTP verification (accept any 6-digit OTP for demo)
+    if (apiClient != null) {
+      return apiClient!.verifyOtp(phoneNumber, otp, role);
+    }
+
     await Future.delayed(const Duration(seconds: 1));
     if (otp.length != 6) throw Exception('Invalid OTP');
 
@@ -90,3 +96,4 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
     };
   }
 }
+

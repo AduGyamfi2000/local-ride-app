@@ -158,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       isLoading: state is AuthLoading,
                       onPressed: _phoneValid
                           ? () => context.read<AuthBloc>().add(SendOtpEvent(_fullPhone))
-                          : null,
+                          : null, text: '',
                     ),
                     const SizedBox(height: 24),
 

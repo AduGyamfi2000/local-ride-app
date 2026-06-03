@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/rating_model.dart';
+import 'rating_api_client.dart';
 
 abstract class RatingRemoteDatasource {
   Future<RatingModel> submitRating({
@@ -19,8 +20,9 @@ abstract class RatingRemoteDatasource {
 
 class RatingRemoteDatasourceImpl implements RatingRemoteDatasource {
   final FirebaseFirestore firestore;
+  final RatingApiClient? apiClient;
 
-  RatingRemoteDatasourceImpl(this.firestore);
+  RatingRemoteDatasourceImpl(this.firestore, {this.apiClient});
 
   @override
   Future<RatingModel> submitRating({
@@ -30,6 +32,16 @@ class RatingRemoteDatasourceImpl implements RatingRemoteDatasource {
     required int score,
     required String? comment,
   }) async {
+    if (apiClient != null) {
+      return apiClient!.submitRating(
+        rideId: rideId,
+        ratedBy: ratedBy,
+        ratedTo: ratedTo,
+        score: score.toDouble(),
+        comment: comment ?? '',
+      );
+    }
+
     try {
       final ratingId = firestore.collection('ratings').doc().id;
       final ratingData = {
@@ -43,8 +55,6 @@ class RatingRemoteDatasourceImpl implements RatingRemoteDatasource {
       };
 
       await firestore.collection('ratings').doc(ratingId).set(ratingData);
-
-      // Update driver's average rating
       await _updateDriverAverageRating(ratedTo);
 
       return RatingModel.fromJson({
@@ -58,6 +68,10 @@ class RatingRemoteDatasourceImpl implements RatingRemoteDatasource {
 
   @override
   Future<List<RatingModel>> getRatings(String userId) async {
+    if (apiClient != null) {
+      return apiClient!.getRatingHistory(userId);
+    }
+
     try {
       final snapshot = await firestore
           .collection('ratings')
@@ -116,7 +130,8 @@ class RatingRemoteDatasourceImpl implements RatingRemoteDatasource {
           .doc(driverId)
           .update({'averageRating': average});
     } catch (e) {
-      // Silent fail - rating submission succeeded even if update fails
+      // Silent fail
     }
   }
 }
+

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/payment_model.dart';
+import 'payment_api_client.dart';
 
 abstract class PaymentRemoteDatasource {
   Future<PaymentModel> processPayment({
@@ -22,8 +23,9 @@ abstract class PaymentRemoteDatasource {
 
 class PaymentRemoteDatasourceImpl implements PaymentRemoteDatasource {
   final FirebaseFirestore firestore;
+  final PaymentApiClient? apiClient;
 
-  PaymentRemoteDatasourceImpl(this.firestore);
+  PaymentRemoteDatasourceImpl(this.firestore, {this.apiClient});
 
   @override
   Future<PaymentModel> processPayment({
@@ -32,6 +34,15 @@ class PaymentRemoteDatasourceImpl implements PaymentRemoteDatasource {
     required String method,
     required String userId,
   }) async {
+    if (apiClient != null) {
+      return apiClient!.processPayment(
+        userId: userId,
+        rideId: rideId,
+        amount: amount,
+        method: method,
+      );
+    }
+
     try {
       final paymentId = firestore.collection('payments').doc().id;
       final paymentData = {
@@ -46,7 +57,6 @@ class PaymentRemoteDatasourceImpl implements PaymentRemoteDatasource {
       };
 
       await firestore.collection('payments').doc(paymentId).set(paymentData);
-
       await firestore
           .collection('wallets')
           .doc(userId)
@@ -63,6 +73,11 @@ class PaymentRemoteDatasourceImpl implements PaymentRemoteDatasource {
 
   @override
   Future<WalletModel> getWalletBalance(String userId) async {
+    if (apiClient != null) {
+      final data = await apiClient!.getWallet(userId);
+      return WalletModel.fromJson(data);
+    }
+
     try {
       final doc = await firestore.collection('wallets').doc(userId).get();
 
@@ -98,6 +113,11 @@ class PaymentRemoteDatasourceImpl implements PaymentRemoteDatasource {
     required double amount,
     required String method,
   }) async {
+    if (apiClient != null) {
+      final data = await apiClient!.addFunds(userId: userId, amount: amount, method: method);
+      return WalletModel.fromJson(data);
+    }
+
     try {
       await firestore
           .collection('wallets')
@@ -112,6 +132,11 @@ class PaymentRemoteDatasourceImpl implements PaymentRemoteDatasource {
 
   @override
   Future<List<TransactionModel>> getTransactionHistory(String userId) async {
+    if (apiClient != null) {
+      final data = await apiClient!.getTransactionHistory(userId);
+      return data.map((e) => TransactionModel.fromJson(e)).toList();
+    }
+
     try {
       final querySnapshot =
           await firestore.collection('transactions').where('userId', isEqualTo: userId).get();
@@ -122,3 +147,4 @@ class PaymentRemoteDatasourceImpl implements PaymentRemoteDatasource {
     }
   }
 }
+

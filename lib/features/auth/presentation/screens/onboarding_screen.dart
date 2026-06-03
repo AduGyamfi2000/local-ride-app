@@ -176,7 +176,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     icon: _currentPage == _pages.length - 1
                         ? Icons.check_rounded
                         : Icons.arrow_forward_rounded,
-                    onPressed: _next,
+                    onPressed: _next, text: '',
                   ),
                 ],
               ),

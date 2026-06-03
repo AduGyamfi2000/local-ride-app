@@ -1,7 +1,4 @@
-// lib/core/di/injection_container.dart
-
 import 'package:get_it/get_it.dart';
-import 'package:rural_ride/features/driver/domain/entities/driver_entity.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../services/location_service.dart';
 import '../services/voice_service.dart';
@@ -12,13 +9,18 @@ import '../../features/auth/data/repositories/auth_repository_impl.dart';
 import '../../features/auth/domain/repositories/auth_repository.dart';
 import '../../features/auth/domain/usecases/login_with_phone_usecase.dart';
 import '../../features/auth/presentation/bloc/auth_bloc.dart';
-
 import '../../features/ride/domain/repositories/ride_repository.dart';
 import '../../features/ride/domain/usecases/request_ride_usecase.dart';
-
 import '../../features/ride/presentation/bloc/ride_bloc.dart';
-
+import '../../features/ride/data/datasources/ride_local_datasource.dart';
+import '../../features/ride/data/datasources/ride_remote_datasource.dart';
+import '../../features/ride/data/repositories/ride_repository_impl.dart';
 import '../../features/driver/presentation/bloc/driver_bloc.dart';
+import '../../features/driver/data/datasources/driver_local_datasource.dart';
+import '../../features/driver/data/datasources/driver_remote_datasource.dart';
+import '../../features/driver/data/repositories/driver_repository_impl.dart';
+import '../../features/driver/domain/repositories/driver_repository.dart';
+import '../../features/driver/domain/usecases/driver_usecases.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../features/payment/data/datasources/payment_remote_datasource.dart';
 import '../../features/payment/data/repositories/payment_repository_impl.dart';
@@ -39,7 +41,6 @@ Future<void> init() async {
   sl.registerLazySingleton<OfflineSyncService>(() => OfflineSyncService());
 
   // ─── Auth Feature ─────────────────────────────────────────────────────
-  // Data sources
   sl.registerLazySingleton<AuthLocalDatasource>(
     () => AuthLocalDatasourceImpl(sharedPrefs: sl()),
   );
@@ -47,7 +48,6 @@ Future<void> init() async {
     () => AuthRemoteDatasourceImpl(),
   );
 
-  // Repository
   sl.registerLazySingleton<AuthRepository>(
     () => AuthRepositoryImpl(
       localDatasource: sl(),
@@ -56,11 +56,9 @@ Future<void> init() async {
     ),
   );
 
-  // Use cases
   sl.registerLazySingleton(() => LoginWithPhoneUsecase(repository: sl()));
   sl.registerLazySingleton(() => VerifyOtpUsecase(repository: sl()));
 
-  // BLoC
   sl.registerFactory(() => AuthBloc(
         loginWithPhone: sl(),
         verifyOtp: sl(),
@@ -69,7 +67,7 @@ Future<void> init() async {
 
   // ─── Ride Feature ─────────────────────────────────────────────────────
   sl.registerLazySingleton<RideLocalDatasource>(
-    () => RideLocalDatasourceImpl(sharedPrefs: sl()),
+    () => RideLocalDatasourceImpl(),
   );
   sl.registerLazySingleton<RideRemoteDatasource>(
     () => RideRemoteDatasourceImpl(),

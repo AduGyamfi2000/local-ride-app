@@ -1,6 +1,7 @@
 // lib/features/auth/domain/usecases/login_with_phone_usecase.dart
 
 import 'package:dartz/dartz.dart';
+import 'package:rural_ride/features/auth/domain/entities/user_entity.dart';
 import '../../../../core/errors/failures.dart';
 import '../repositories/auth_repository.dart';
 
@@ -15,7 +16,7 @@ class LoginWithPhoneUsecase {
 
 // lib/features/auth/domain/usecases/verify_otp_usecase.dart
 
-import '../entities/user_entity.dart';
+
 
 class VerifyOtpParams {
   final String phoneNumber;

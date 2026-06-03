@@ -3,6 +3,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:rural_ride/features/driver/domain/entities/driver_entity.dart';
+import 'package:rural_ride/features/driver/domain/usecases/driver_usecases.dart';
 import '../../../../core/services/voice_service.dart';
 
 import '../../../ride/domain/entities/ride_entity.dart';

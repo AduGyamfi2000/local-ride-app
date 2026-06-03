@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../domain/entities/user_entity.dart';
 import '../../domain/usecases/login_with_phone_usecase.dart';
-import '../../domain/usecases/verify_otp_usecase.dart';
+
 
 // Events
 abstract class AuthEvent extends Equatable {

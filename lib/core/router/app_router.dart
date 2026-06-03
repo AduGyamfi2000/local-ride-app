@@ -14,7 +14,7 @@ import '../../features/ride/presentation/screens/ride_history_screen.dart';
 import '../../features/profile/presentation/screens/profile_screen.dart';
 import '../../features/driver/presentation/screens/driver_home_screen.dart';
 import '../../features/driver/presentation/screens/driver_navigation_screen.dart';
-import '../../features/driver/presentation/screens/driver_earnings_screen.dart' hide DriverEarningsScreen;
+import '../../features/driver/presentation/screens/driver_earnings_screen.dart';
 import '../../features/admin/presentation/screens/admin_dashboard_screen.dart';
 import '../../features/ride/presentation/screens/payment_screen.dart';
 import '../../features/payment/presentation/screens/wallet_screen.dart';

@@ -91,20 +91,20 @@ class _DriverNavigationScreenState extends State<DriverNavigationScreen> {
                       label: 'Arrived at Pickup',
                       icon: Icons.person_pin_circle_rounded,
                       variant: AppButtonVariant.secondary,
-                      onPressed: () => setState(() => _pickedUp = true),
+                      onPressed: () => setState(() => _pickedUp = true), text: '',
                     ),
                   if (_pickedUp) ...[
                     AppButton(
                       label: 'Start Trip',
                       icon: Icons.play_arrow_rounded,
-                      onPressed: () {},
+                      onPressed: () {}, text: '',
                     ),
                     const SizedBox(height: 12),
                     AppButton(
                       label: 'End Trip & Collect Fare',
                       icon: Icons.stop_rounded,
                       variant: AppButtonVariant.secondary,
-                      onPressed: () => context.pop(),
+                      onPressed: () => context.pop(), text: '',
                     ),
                   ],
                 ],
