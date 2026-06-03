@@ -165,7 +165,7 @@ class _OtpScreenState extends State<OtpScreen> {
                                 role: _selectedRole,
                               ),
                             )
-                        : null,
+                        : null, text: '',
                   ),
                   const SizedBox(height: 24),
 

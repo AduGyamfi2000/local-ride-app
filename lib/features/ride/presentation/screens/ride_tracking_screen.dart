@@ -110,7 +110,7 @@ class _RideTrackingScreenState extends State<RideTrackingScreen> {
             height: 240,
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [color.withOpacity(0.15), AppColors.surfaceVariant],
+                colors: [color.withValues(alpha: 0.15), AppColors.surfaceVariant],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
@@ -175,18 +175,18 @@ class _RideTrackingScreenState extends State<RideTrackingScreen> {
                       label: 'Cancel Ride',
                       variant: AppButtonVariant.outlined,
                       icon: Icons.cancel_rounded,
-                      onPressed: () => _showCancelDialog(context),
+                      onPressed: () => _showCancelDialog(context), text: '',
                     ),
                   if (isCompleted) ...[
                     AppButton(
                       label: 'Rate Your Driver ⭐',
-                      onPressed: () => _showRatingDialog(context),
+                      onPressed: () => _showRatingDialog(context), text: '',
                     ),
                     const SizedBox(height: 12),
                     AppButton(
                       label: 'Back to Home',
                       variant: AppButtonVariant.outlined,
-                      onPressed: () => context.go('/user/home'),
+                      onPressed: () => context.go('/user/home'), text: '',
                     ),
                   ],
                 ],
@@ -206,14 +206,14 @@ class _RideTrackingScreenState extends State<RideTrackingScreen> {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-              color: Colors.black.withOpacity(0.06), blurRadius: 12)
+              color: Colors.black.withValues(alpha: 0.06), blurRadius: 12)
         ],
       ),
       child: Row(
         children: [
           CircleAvatar(
             radius: 30,
-            backgroundColor: AppColors.primary.withOpacity(0.15),
+            backgroundColor: AppColors.primary.withValues(alpha: 0.15),
             child: const Text('👨', style: TextStyle(fontSize: 28)),
           ),
           const SizedBox(width: 14),
@@ -271,7 +271,7 @@ class _RideTrackingScreenState extends State<RideTrackingScreen> {
         width: 40,
         height: 40,
         decoration: BoxDecoration(
-          color: color.withOpacity(0.12),
+          color: color.withValues(alpha: 0.12),
           shape: BoxShape.circle,
         ),
         child: Icon(icon, color: color, size: 20),
@@ -440,7 +440,7 @@ class _RideTrackingScreenState extends State<RideTrackingScreen> {
                 onPressed: () {
                   Navigator.pop(ctx);
                   context.go('/user/home');
-                },
+                }, text: '',
               ),
             ],
           ),
@@ -454,7 +454,7 @@ class _MapGridPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = AppColors.surfaceVariant.withOpacity(0.6)
+      ..color = AppColors.surfaceVariant.withValues(alpha: 0.6)
       ..strokeWidth = 1;
     for (double x = 0; x < size.width; x += 40) {
       canvas.drawLine(Offset(x, 0), Offset(x, size.height), paint);

@@ -1,6 +1,11 @@
 // lib/features/ride/domain/repositories/ride_repository.dart
 
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:dartz/dartz.dart';
+import 'package:rural_ride/features/ride/data/models/ride_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../core/errors/failures.dart';
 import '../entities/ride_entity.dart';
 
@@ -16,9 +21,8 @@ abstract class RideRepository {
 
 // lib/features/ride/data/datasources/ride_local_datasource.dart
 
-import 'dart:convert';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../models/ride_model.dart';
+
+
 
 abstract class RideLocalDatasource {
   Future<void> cacheRide(RideModel ride);
@@ -69,10 +73,6 @@ class RideLocalDatasourceImpl implements RideLocalDatasource {
   }
 }
 
-// lib/features/ride/data/datasources/ride_remote_datasource.dart
-
-import 'dart:async';
-import 'dart:math';
 
 abstract class RideRemoteDatasource {
   Future<RideModel> requestRide(RideModel ride);

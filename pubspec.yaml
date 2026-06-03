@@ -78,6 +78,11 @@ dev_dependencies:
   bloc_test: ^9.1.5
   mocktail: ^1.0.1
 
+dependency_overrides:
+  # This forces a modern version of analyzer that satisfies flutter_test/bloc_test,
+  # while allowing hive_generator to still compile successfully.
+  analyzer: ^6.0.0
+
 flutter:
   uses-material-design: true
 

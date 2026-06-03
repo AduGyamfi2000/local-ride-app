@@ -7,8 +7,7 @@ import '../../../../core/services/location_service.dart';
 import '../../../../core/services/voice_service.dart';
 import '../../domain/entities/ride_entity.dart';
 import '../../domain/usecases/request_ride_usecase.dart';
-import '../../domain/usecases/get_ride_history_usecase.dart';
-import '../../domain/usecases/get_active_ride_usecase.dart';
+
 
 // Events
 abstract class RideEvent extends Equatable {

@@ -239,10 +239,10 @@ class _RequestRideScreenState extends State<RequestRideScreen> {
                         Container(
                           padding: const EdgeInsets.all(16),
                           decoration: BoxDecoration(
-                            color: AppColors.secondary.withOpacity(0.08),
+                            color: AppColors.secondary.withValues(alpha: 0.08),
                             borderRadius: BorderRadius.circular(16),
                             border: Border.all(
-                                color: AppColors.secondary.withOpacity(0.2)),
+                                color: AppColors.secondary.withValues(alpha: 0.2)),
                           ),
                           child: Row(
                             children: [
@@ -296,7 +296,7 @@ class _RequestRideScreenState extends State<RequestRideScreen> {
                         Container(
                           padding: const EdgeInsets.all(14),
                           decoration: BoxDecoration(
-                            color: AppColors.warning.withOpacity(0.1),
+                            color: AppColors.warning.withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: const Row(
@@ -329,7 +329,7 @@ class _RequestRideScreenState extends State<RequestRideScreen> {
                   color: AppColors.surface,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.06),
+                      color: Colors.black.withValues(alpha: 0.06),
                       blurRadius: 12,
                       offset: const Offset(0, -4),
                     ),
@@ -338,7 +338,7 @@ class _RequestRideScreenState extends State<RequestRideScreen> {
                 child: AppButton(
                   label: _isOnline ? 'Request Ride 🚗' : 'Save Ride Request 📴',
                   isLoading: state is RideLoading,
-                  onPressed: _canRequest ? () => _submitRequest(context) : null,
+                  onPressed: _canRequest ? () => _submitRequest(context) : null, text: '',
                 ),
               ),
             ],
@@ -443,7 +443,7 @@ class _RequestRideScreenState extends State<RequestRideScreen> {
         width: 36,
         height: 36,
         decoration: BoxDecoration(
-          color: AppColors.primary.withOpacity(0.12),
+          color: AppColors.primary.withValues(alpha: 0.12),
           shape: BoxShape.circle,
         ),
         child: Icon(icon, color: AppColors.primary, size: 20),
@@ -510,7 +510,7 @@ class _VehicleCard extends StatelessWidget {
         duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
         decoration: BoxDecoration(
-          color: isSelected ? _color.withOpacity(0.12) : AppColors.surface,
+          color: isSelected ? _color.withValues(alpha: 0.12) : AppColors.surface,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: isSelected ? _color : AppColors.surfaceVariant,

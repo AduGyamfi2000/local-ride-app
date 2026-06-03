@@ -134,9 +134,8 @@ class AppTheme {
           secondary: AppColors.secondary,
           onSecondary: AppColors.textOnPrimary,
           error: AppColors.error,
-          background: AppColors.background,
           surface: AppColors.surface,
-          surfaceVariant: AppColors.surfaceVariant,
+          surfaceContainerHighest: AppColors.surfaceVariant,
         ),
         scaffoldBackgroundColor: AppColors.background,
         appBarTheme: const AppBarTheme(
@@ -205,10 +204,10 @@ class AppTheme {
           labelStyle: AppTextStyles.bodyMedium,
           hintStyle: const TextStyle(color: AppColors.textHint, fontFamily: 'Nunito'),
         ),
-        cardTheme: CardTheme(
+        cardTheme: CardThemeData(
           color: AppColors.cardBg,
           elevation: 2,
-          shadowColor: Colors.black.withOpacity(0.08),
+          shadowColor: Colors.black.withValues(alpha: 0.08),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -235,7 +234,7 @@ class AppTheme {
         ),
         chipTheme: ChipThemeData(
           backgroundColor: AppColors.surfaceVariant,
-          selectedColor: AppColors.primary.withOpacity(0.2),
+          selectedColor: AppColors.primary.withValues(alpha: 0.2),
           labelStyle: AppTextStyles.bodyMedium,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
@@ -260,7 +259,6 @@ class AppTheme {
           primary: AppColors.primary,
           onPrimary: AppColors.textOnPrimary,
           secondary: AppColors.secondaryLight,
-          background: AppColors.darkBackground,
           surface: AppColors.darkSurface,
         ),
         scaffoldBackgroundColor: AppColors.darkBackground,
@@ -276,7 +274,7 @@ class AppTheme {
             color: AppColors.darkTextPrimary,
           ),
         ),
-        cardTheme: CardTheme(
+        cardTheme: CardThemeData(
           color: AppColors.darkCard,
           elevation: 2,
           shape: RoundedRectangleBorder(

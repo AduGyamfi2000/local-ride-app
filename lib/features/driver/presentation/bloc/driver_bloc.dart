@@ -2,9 +2,10 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:rural_ride/features/driver/domain/entities/driver_entity.dart';
+import 'package:rural_ride/features/driver/domain/usecases/driver_usecases.dart';
 import '../../../../core/services/voice_service.dart';
-import '../../domain/usecases/update_driver_status_usecase.dart';
-import '../../domain/usecases/accept_ride_usecase.dart';
+
 import '../../../ride/domain/entities/ride_entity.dart';
 
 // Events
