@@ -133,7 +133,7 @@ class _NavMapPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = AppColors.surfaceVariant.withOpacity(0.8)
+      ..color = AppColors.surfaceVariant.withValues(alpha: 0.8)
       ..strokeWidth = 1;
     for (double x = 0; x < size.width; x += 50) {
       canvas.drawLine(Offset(x, 0), Offset(x, size.height), paint);

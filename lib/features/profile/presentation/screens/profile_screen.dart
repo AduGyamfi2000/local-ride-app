@@ -40,7 +40,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   CircleAvatar(
                     radius: 52,
-                    backgroundColor: AppColors.primary.withOpacity(0.15),
+                    backgroundColor: AppColors.primary.withValues(alpha: 0.15),
                     child: const Text('👤', style: TextStyle(fontSize: 52)),
                   ),
                   Positioned(
@@ -135,7 +135,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   Switch(
                     value: _voiceEnabled,
-                    activeColor: AppColors.primary,
+                    activeThumbColor: AppColors.primary,
                     onChanged: (v) => setState(() => _voiceEnabled = v),
                   ),
                 ],
@@ -147,14 +147,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
               label: 'Save Changes',
               icon: Icons.save_rounded,
               isLoading: _isSaving,
-              onPressed: _save,
+              onPressed: _save, text: '',
             ),
             const SizedBox(height: 14),
             AppButton(
               label: 'Logout',
               variant: AppButtonVariant.outlined,
               icon: Icons.logout_rounded,
-              onPressed: _logout,
+              onPressed: _logout, text: '',
             ),
           ],
         ),

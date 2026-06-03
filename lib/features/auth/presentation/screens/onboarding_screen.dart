@@ -162,7 +162,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     count: _pages.length,
                     effect: ExpandingDotsEffect(
                       activeDotColor: AppColors.primary,
-                      dotColor: AppColors.primary.withOpacity(0.3),
+                      dotColor: AppColors.primary.withValues(alpha: 0.3),
                       dotHeight: 8,
                       dotWidth: 8,
                       expansionFactor: 3,

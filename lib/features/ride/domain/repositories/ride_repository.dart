@@ -1,6 +1,7 @@
 // lib/features/ride/domain/repositories/ride_repository.dart
 
 import 'package:dartz/dartz.dart';
+import 'package:rural_ride/features/ride/data/models/ride_model.dart';
 import '../../../../core/errors/failures.dart';
 import '../entities/ride_entity.dart';
 
@@ -18,7 +19,7 @@ abstract class RideRepository {
 
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../models/ride_model.dart';
+
 
 abstract class RideLocalDatasource {
   Future<void> cacheRide(RideModel ride);

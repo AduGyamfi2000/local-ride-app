@@ -1,6 +1,7 @@
 // lib/features/driver/domain/entities/driver_entity.dart
 
 import 'package:equatable/equatable.dart';
+import 'package:rural_ride/core/utils/network_info.dart';
 
 class DriverEntity extends Equatable {
   final String id;

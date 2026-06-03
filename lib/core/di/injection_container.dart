@@ -1,33 +1,30 @@
 // lib/core/di/injection_container.dart
 
 import 'package:get_it/get_it.dart';
+import 'package:rural_ride/features/driver/domain/entities/driver_entity.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../services/location_service.dart';
 import '../services/voice_service.dart';
 import '../services/offline_sync_service.dart';
 import '../utils/network_info.dart';
 import '../../features/auth/data/datasources/auth_local_datasource.dart';
-import '../../features/auth/data/datasources/auth_remote_datasource.dart';
 import '../../features/auth/data/repositories/auth_repository_impl.dart';
 import '../../features/auth/domain/repositories/auth_repository.dart';
 import '../../features/auth/domain/usecases/login_with_phone_usecase.dart';
-import '../../features/auth/domain/usecases/verify_otp_usecase.dart';
 import '../../features/auth/presentation/bloc/auth_bloc.dart';
-import '../../features/ride/data/datasources/ride_local_datasource.dart';
-import '../../features/ride/data/datasources/ride_remote_datasource.dart';
-import '../../features/ride/data/repositories/ride_repository_impl.dart';
+
 import '../../features/ride/domain/repositories/ride_repository.dart';
 import '../../features/ride/domain/usecases/request_ride_usecase.dart';
-import '../../features/ride/domain/usecases/get_ride_history_usecase.dart';
-import '../../features/ride/domain/usecases/get_active_ride_usecase.dart';
+
 import '../../features/ride/presentation/bloc/ride_bloc.dart';
-import '../../features/driver/data/datasources/driver_local_datasource.dart';
-import '../../features/driver/data/datasources/driver_remote_datasource.dart';
-import '../../features/driver/data/repositories/driver_repository_impl.dart';
-import '../../features/driver/domain/repositories/driver_repository.dart';
-import '../../features/driver/domain/usecases/update_driver_status_usecase.dart';
-import '../../features/driver/domain/usecases/accept_ride_usecase.dart';
+
 import '../../features/driver/presentation/bloc/driver_bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../../features/payment/data/datasources/payment_remote_datasource.dart';
+import '../../features/payment/data/repositories/payment_repository_impl.dart';
+import '../../features/payment/domain/repositories/payment_repository.dart';
+import '../../features/payment/domain/usecases/payment_usecases.dart';
+import '../../features/payment/presentation/bloc/payment_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -118,5 +115,24 @@ Future<void> init() async {
         updateStatus: sl(),
         acceptRide: sl(),
         voiceService: sl(),
+      ));
+
+  // ─── Payment Feature ──────────────────────────────────────────────────
+  sl.registerLazySingleton<PaymentRemoteDatasource>(
+    () => PaymentRemoteDatasourceImpl(FirebaseFirestore.instance),
+  );
+  sl.registerLazySingleton<PaymentRepository>(
+    () => PaymentRepositoryImpl(sl()),
+  );
+  sl.registerLazySingleton(() => ProcessPaymentUsecase(sl()));
+  sl.registerLazySingleton(() => GetWalletUsecase(sl()));
+  sl.registerLazySingleton(() => AddFundsUsecase(sl()));
+  sl.registerLazySingleton(() => GetTransactionHistoryUsecase(sl()));
+
+  sl.registerFactory(() => PaymentBloc(
+        processPaymentUsecase: sl(),
+        getWalletUsecase: sl(),
+        addFundsUsecase: sl(),
+        getTransactionHistoryUsecase: sl(),
       ));
 }

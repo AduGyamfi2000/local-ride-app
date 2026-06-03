@@ -53,7 +53,6 @@ class AuthLocalDatasourceImpl implements AuthLocalDatasource {
 
 // lib/features/auth/data/datasources/auth_remote_datasource.dart
 
-import '../models/user_model.dart';
 
 abstract class AuthRemoteDatasource {
   Future<String> sendOtp(String phoneNumber);

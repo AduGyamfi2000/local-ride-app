@@ -1,6 +1,9 @@
 // lib/features/ride/domain/usecases/request_ride_usecase.dart
 
 import 'package:dartz/dartz.dart';
+import 'package:rural_ride/core/services/offline_sync_service.dart';
+import 'package:rural_ride/core/utils/network_info.dart';
+import 'package:rural_ride/features/ride/data/models/ride_model.dart';
 import '../../../../core/errors/failures.dart';
 import '../entities/ride_entity.dart';
 import '../repositories/ride_repository.dart';
@@ -38,16 +41,7 @@ class GetActiveRideUsecase {
 
 // lib/features/ride/data/repositories/ride_repository_impl.dart
 
-import 'package:dartz/dartz.dart';
-import '../../../../core/constants/app_constants.dart';
-import '../../../../core/errors/failures.dart';
-import '../../../../core/services/offline_sync_service.dart';
-import '../../../../core/utils/network_info.dart';
-import '../../data/datasources/ride_local_datasource.dart';
-import '../../data/datasources/ride_remote_datasource.dart';
-import '../../data/models/ride_model.dart';
-import '../../domain/entities/ride_entity.dart';
-import '../../domain/repositories/ride_repository.dart';
+
 
 class RideRepositoryImpl implements RideRepository {
   final RideLocalDatasource local;
@@ -71,7 +65,7 @@ class RideRepositoryImpl implements RideRepository {
       // Save offline
       await offlineSyncService.saveRideRequestOffline(model.toJson());
       await local.cacheRide(model);
-      return Right(model.copyWith(isSyncedOffline: false) as RideEntity);
+      return Right(model.copyWith(isSyncedOffline: false));
     }
 
     try {
@@ -82,7 +76,7 @@ class RideRepositoryImpl implements RideRepository {
       // Fallback to offline
       await offlineSyncService.saveRideRequestOffline(model.toJson());
       await local.cacheRide(model);
-      return Right(model.copyWith(isSyncedOffline: false) as RideEntity);
+      return Right(model.copyWith(isSyncedOffline: false));
     }
   }
 

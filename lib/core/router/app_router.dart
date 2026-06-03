@@ -7,7 +7,6 @@ import '../../features/auth/presentation/screens/splash_screen.dart';
 import '../../features/auth/presentation/screens/onboarding_screen.dart';
 import '../../features/auth/presentation/screens/login_screen.dart';
 import '../../features/auth/presentation/screens/otp_screen.dart';
-import '../../features/auth/presentation/screens/role_select_screen.dart';
 import '../../features/ride/presentation/screens/user_home_screen.dart';
 import '../../features/ride/presentation/screens/request_ride_screen.dart';
 import '../../features/ride/presentation/screens/ride_tracking_screen.dart';
@@ -15,8 +14,11 @@ import '../../features/ride/presentation/screens/ride_history_screen.dart';
 import '../../features/profile/presentation/screens/profile_screen.dart';
 import '../../features/driver/presentation/screens/driver_home_screen.dart';
 import '../../features/driver/presentation/screens/driver_navigation_screen.dart';
-import '../../features/driver/presentation/screens/driver_earnings_screen.dart';
+import '../../features/driver/presentation/screens/driver_earnings_screen.dart' hide DriverEarningsScreen;
 import '../../features/admin/presentation/screens/admin_dashboard_screen.dart';
+import '../../features/ride/presentation/screens/payment_screen.dart';
+import '../../features/payment/presentation/screens/wallet_screen.dart';
+import '../../features/payment/presentation/screens/add_funds_screen.dart';
 import '../constants/app_constants.dart';
 
 class AppRoutes {
@@ -34,6 +36,9 @@ class AppRoutes {
   static const String rideTracking = '/user/tracking';
   static const String rideHistory = '/user/history';
   static const String profile = '/user/profile';
+  static const String payment = '/payment';
+  static const String wallet = '/wallet';
+  static const String addFunds = '/add-funds';
 
   // Driver routes
   static const String driverHome = '/driver/home';
@@ -96,6 +101,31 @@ GoRouter buildRouter() {
       GoRoute(
         path: AppRoutes.profile,
         builder: (context, state) => const ProfileScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.payment,
+        builder: (context, state) {
+          final args = state.extra as Map<String, dynamic>? ?? {};
+          return PaymentScreen(
+            rideId: args['rideId'] ?? '',
+            estimatedFare: args['estimatedFare'] ?? 0.0,
+            userId: args['userId'] ?? '',
+          );
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.wallet,
+        builder: (context, state) {
+          final userId = state.extra as String? ?? '';
+          return WalletScreen(userId: userId);
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.addFunds,
+        builder: (context, state) {
+          final userId = state.extra as String? ?? '';
+          return AddFundsScreen(userId: userId);
+        },
       ),
 
       // Driver routes
